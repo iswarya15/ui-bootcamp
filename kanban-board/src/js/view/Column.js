@@ -1,7 +1,11 @@
-import KanbanAPI from '../api/kanbanAPI';
+import KanbanAPI from '../api/kanbanAPI.js';
+import DropZone from './DropZone.js';
+import Item from './Item.js';
 
 export default class Column {
     constructor(id, title) { //column represents single col in UI
+        const topDropzone = DropZone.createDropZone();
+
         this.elements = {};
         this.elements.root = Column.createRoot();
 
@@ -12,13 +16,14 @@ export default class Column {
 
         this.elements.root.dataset.id = id;
         this.elements.title.textContent = title;
+        this.elements.items.appendChild(topDropzone)
 
         this.elements.addItem.addEventListener("click", () => {
-            //TODO: add item
+            const newItem = KanbanAPI.insertItem(id, '');
+            this.renderItems(newItem)
         });
 
         KanbanAPI.getItems(id).forEach(item => {
-            console.log(item);
             this.renderItems(item);
         })
     }
@@ -40,6 +45,7 @@ export default class Column {
     }
 
     renderItems(data) {
-        // TODO: create Item Instance
+        const item = new Item(data.id, data.content);
+        this.elements.items.appendChild(item.elements.root)
     }
 }
