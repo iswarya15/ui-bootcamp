@@ -14,30 +14,30 @@ const onStartGame = () => {
   guessDisplay.textContent = "";
 
   randomNumber = Math.round(Math.random() * 10);
-  startGame.setAttribute("disabled", true);
-  submit.removeAttribute("disabled");
+  startGame.disabled = true;
+  submit.disabled = false;
   console.log(randomNumber);
 };
 
 submit.addEventListener("click", () => {
-  guessArray.push(input.valueAsNumber);
+  guessArray.push(+input.value);
   guessDisplay.textContent = "Your Guesses " + guessArray;
 
-  if (guessArray.length > 9 && input.valueAsNumber != randomNumber) {
+  if (guessArray.length > 9 && +input.value != randomNumber) {
     output.textContent = "You lost! The number is " + randomNumber;
-    submit.setAttribute("disabled", true);
-    startGame.removeAttribute("disabled");
-  } else if (input.valueAsNumber > randomNumber) {
+    submit.disabled = true;
+    startGame.disabled = false;
+  } else if (+input.value > randomNumber) {
     output.textContent = "Too high!";
-  } else if (input.valueAsNumber < randomNumber) {
+  } else if (+input.value < randomNumber) {
     output.textContent = "Too low!";
   } else {
     output.textContent = "You Win!! The number is " + randomNumber;
-    submit.setAttribute("disabled", true);
-    startGame.removeAttribute("disabled");
+    submit.disabled = true;
+    startGame.disabled = false;
   }
 });
 
-startGame.addEventListener("click", startGame);
+startGame.addEventListener("click", onStartGame);
 
 onStartGame();
