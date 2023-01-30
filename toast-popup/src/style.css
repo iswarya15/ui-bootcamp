@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+select {
+    margin: 10px;
+    padding: 10px;
+}
+
+#message {
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 18px;
+}
+
+#rangeInput {
+    margin-left: 15px;
+}
+
+.btn {
+    background-color: crimson;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+
+#toast-content.warning {
+    background-color: rgb(255, 255, 0);
+}
+
+#toast-content.error {
+    background-color: rgb(255, 25, 25);
+}
+
+#toast-content.info {
+    background-color: rgb(243, 226, 229);
+}
+
+#toast-content.success {
+    background-color: rgb(26, 177, 26);
+}
+
+.toast-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#toast-content {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    align-items: center;
+}
+
+.left-top {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.left-bottom {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+.right-top {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.right-bottom {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+#close {
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 25px;
+}

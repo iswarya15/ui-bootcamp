@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toast Popup</title>
+  </head>
+  <body
+    style="
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    "
+  >
+    <h1>Toast Popup</h1>
+    <div class="container">
+      <select id="horizontal-position">
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+      </select>
+      <select id="vertical-position">
+        <option value="top">Top</option>
+        <option value="bottom">Bottom</option>
+      </select>
+      <select id="type">
+        <option value="success">Success</option>
+        <option value="error">Error</option>
+        <option value="warning">Warning</option>
+        <option value="info">Info</option>
+      </select>
+      <input id="message" type="text" placeholder="" />
+      <div style="margin-top: 15px">
+        <label
+          >Duration
+          <input id="rangeInput" type="range" />
+        </label>
+      </div>
+
+      <button class="btn" id="showToastBtn">Show Toast</button>
+    </div>
+    <div class="toast-container left-top"></div>
+    <div class="toast-container left-bottom"></div>
+    <div class="toast-container right-top"></div>
+    <div class="toast-container right-bottom"></div>
+
+    <template id="toast-template">
+      <div id="toast-content">
+        <span id="toast-text">This is a toast</span>
+        <span id="close">&times;</span>
+      </div>
+    </template>
+  </body>
+</html>
