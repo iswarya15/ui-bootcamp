@@ -1,60 +1,63 @@
 import "./style.css";
 
-const starCount = 5;
+const starsCount = 5;
 let filled = 0;
 let unfilled = 0;
-let rating = 0;
+let selectedRating = 0;
+const smileys = ["😢", "😞", "😐", "😀", "😎"];
 
 const starContainer = document.getElementById("star-container");
 const smileyContainer = document.getElementById("smiley-container");
-const smileys = ["😢", "😞", "😐", "😀", "😎"];
 
-for (let i = 1; i <= starCount; i++) {
+for (let i = 1; i <= starsCount; i++) {
   const div = document.createElement("div");
-  div.classList.add("star-empty", "star");
+  div.classList = "star star-empty";
   div.dataset.index = i;
   starContainer.appendChild(div);
 }
 
-const stars = starContainer.querySelectorAll(".star");
+const stars = document.querySelectorAll(".star");
+
 starContainer.addEventListener("mouseover", hoverListener);
 starContainer.addEventListener("mouseleave", leaveListener);
 starContainer.addEventListener("click", clickListener);
 
-function hoverListener(event) {
-  if (event.target?.classList.contains("star")) {
-    const index = event.target.dataset.index;
-    fillStars(+index);
+function clickListener(event) {
+  const starElement = event.target;
+  if (starElement.classList.contains("star")) {
+    selectedRating = starElement.dataset.index;
+    fillStars(+selectedRating);
+    setSmiley();
   }
 }
 
-function fillStars(ratingCount) {
-  for (let i = filled; i < ratingCount; i++) {
-    stars[i].classList.add("star-filled");
+function fillStars(count) {
+  for (let i = filled; i < count; i++) {
     stars[i].classList.remove("star-empty");
+    stars[i].classList.add("star-filled");
   }
 
-  for (let i = ratingCount; i < unfilled; i++) {
+  for (let i = count; i < unfilled; i++) {
     stars[i].classList.remove("star-filled");
     stars[i].classList.add("star-empty");
   }
-
-  filled = ratingCount;
-  unfilled = ratingCount;
+  filled = count;
+  unfilled = count;
 }
 
-function leaveListener() {
-  fillStars(+rating);
-}
-
-function clickListener(event) {
-  if (event.target.classList.contains("star")) {
-    rating = +event.target.dataset.index;
-    setSmiley(+rating);
+function hoverListener(event) {
+  const starElement = event.target;
+  if (starElement.classList.contains("star")) {
+    fillStars(event.target.dataset.index);
   }
 }
 
-function setSmiley(rating) {
-  const index = Math.ceil((rating * smileys.length) / starCount) - 1;
+function leaveListener(event) {
+  fillStars(selectedRating);
+}
+
+function setSmiley() {
+  const index =
+    Math.ceil((smileys.length * selectedRating) / smileys.length) - 1;
   smileyContainer.textContent = smileys[index];
 }
