@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    border: 0.5px solid black;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.container>div {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    display: flex;
+    margin: 10px;
+}
+
+.section input {
+    margin-right: 20px;
+}
+
+.left-section {
+    width: 45%;
+}
+
+.right-section {
+    width: 45%;
+}
+
+.controls {
+    width: 10%;
+    justify-content: space-evenly;
+    align-items: center;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+}
+
+.controls button {
+    width: 40px;
+}
